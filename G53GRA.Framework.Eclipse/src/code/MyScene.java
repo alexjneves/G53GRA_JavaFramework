@@ -4,6 +4,7 @@ import processing.core.*;		// import processing core
 import processing.opengl.*;		// import processing/opengl bindings
 import framework.engine.*;		// import framework classes
 import framework.interfaces.*;	// import abstract classes for DisplayableObject and AnimatedObject
+import code.demos.Triangle;
 import code.objects.*;			// import your objects package
 /**
  * Your main Coursework class. Inherits {@code framework.}{@link Scene}. Edit this class.  

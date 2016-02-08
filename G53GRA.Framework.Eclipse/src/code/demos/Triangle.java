@@ -1,4 +1,4 @@
-package code.objects;
+package code.demos;
 
 import framework.engine.*;
 import framework.interfaces.*;

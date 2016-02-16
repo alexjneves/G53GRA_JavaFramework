@@ -1,7 +1,7 @@
 /**
  * 
  */
-package code.demos;
+package code.demos.triforce;
 
 import processing.opengl.PGL;
 import framework.engine.*;

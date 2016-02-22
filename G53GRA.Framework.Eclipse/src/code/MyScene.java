@@ -3,10 +3,11 @@ package code;
 import processing.core.*;		// import processing core
 import processing.opengl.*;		// import processing/opengl bindings
 import framework.engine.*;		// import framework classes
-import framework.interfaces.*;	// import abstract classes for DisplayableObject and AnimatedObject
+import framework.interfaces.*;	// import framework interfaces
 import code.objects.*;			// import your objects package
 import code.demos.*;
 import code.demos.triforce.*;
+import code.demos.viewing.Floor;
 import code.demos.animatedlamp.Lamp;
 import code.demos.solarsystem.*;
 
@@ -58,11 +59,22 @@ public class MyScene extends Scene {
 //		addObjectToScene(earth,"earth");
 		
 		// DEMO 4
-		Lamp lamp = new Lamp(this);
-		lamp.size(10.f);
-		addObjectToScene(lamp,"lamp");		
+//		Lamp lamp = new Lamp(this);
+//		lamp.size(10.f);
+//		addObjectToScene(lamp,"lamp");		
+//		
+		
+		// DEMO 5
+		Floor f = new Floor(this);
+		Triangle t = new Triangle(this);
+		f.size(100.f);
+		f.position(0.f,150.f,0.f);
+		t.size(0.5f);
+		addObjectToScene(f);
+		addObjectToScene(t);
 		
 		super.initialise();						// call default initialisation for camera and projection. 
+		
 	}
 	
 	/**
@@ -104,8 +116,8 @@ public class MyScene extends Scene {
 	 */
 	@Override
 	protected void projection(){
-		super.projection();	// calls default projection setup in Scene (orthographic)
-		//perspective(radians(60.f),(float)width/(float)height, 1.f, 1000.f);
+		//super.projection();	// calls default projection setup in Scene (orthographic)
+		perspective(radians(60.f),(float)width/(float)height, 1.f, 1000.f);
 	}
 	
 }

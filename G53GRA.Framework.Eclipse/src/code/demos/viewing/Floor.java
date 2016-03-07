@@ -30,6 +30,8 @@ public class Floor extends DisplayableObject {
 		parent.pushMatrix();
 		parent.pushStyle();
 			parent.noStroke();
+			//parent.shininess(128);
+		//	parent.specular(255,255,255);
 			parent.beginShape(Scene.QUADS);
 				for (int i = -10; i < 10; i++) {
 					for (int j = -10; j < 10; j++) {

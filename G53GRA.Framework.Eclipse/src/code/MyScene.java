@@ -9,6 +9,7 @@ import code.demos.*;
 import code.demos.triforce.*;
 import code.demos.viewing.Floor;
 import code.demos.animatedlamp.Lamp;
+import code.demos.lighting.*;
 import code.demos.solarsystem.*;
 
 /**
@@ -65,16 +66,43 @@ public class MyScene extends Scene {
 //		
 		
 		// DEMO 5
-		Floor f = new Floor(this);
-		Triangle t = new Triangle(this);
+//		Floor f = new Floor(this);
+//		Triangle t = new Triangle(this);
+//		f.size(100.f);
+//		f.position(0.f,150.f,0.f);
+//		t.size(0.5f);
+//		addObjectToScene(f);
+//		addObjectToScene(t);
+		
+		// DEMO 6 (LIGHTING)
+		// Show teapot and lighting
+//		Floor  f = new Floor(this);
+//		f.size(100.f);
+//		f.position(0.f,150.f,0.f);
+//		Teapot t = new Teapot(this);
+//		t.size(250.f);
+//		
+//		Light l = new Light(this);
+//		
+//		addObjectToScene(f);
+//		addObjectToScene(l);
+//		addObjectToScene(t);		
+		
+		// DEMO 7 (MULTIPLE LIGHTS)
+		Floor  f = new Floor(this);
 		f.size(100.f);
 		f.position(0.f,150.f,0.f);
-		t.size(0.5f);
+		Teapot t = new Teapot(this);
+		t.size(250.f);
+		
+		MultiLight m = new MultiLight(this);
+//		
 		addObjectToScene(f);
-		addObjectToScene(t);
+		addObjectToScene(m);
+		addObjectToScene(t);		
+		
 		
 		super.initialise();						// call default initialisation for camera and projection. 
-		
 	}
 	
 	/**
@@ -83,9 +111,8 @@ public class MyScene extends Scene {
 	 */
 	@Override
 	protected void globalLighting(){
-		super.globalLighting();
-		lightSpecular(255.f,255.f,255.f);
-		directionalLight(200.f,200.f,200.f,-1.f,1.f,1.f);
+	//	super.globalLighting();		// DISABLE GLOBAL LIGHTING WHEN IMPLEMENTING OWN
+		//ambientLight(255.f,255.f,255.f);
 	}
 	
 	/**
@@ -117,7 +144,7 @@ public class MyScene extends Scene {
 	@Override
 	protected void projection(){
 		//super.projection();	// calls default projection setup in Scene (orthographic)
-		perspective(radians(60.f),(float)width/(float)height, 1.f, 1000.f);
+		perspective(radians(60.f),(float)width/(float)height, 1.f, 4000.f);
 	}
 	
 }

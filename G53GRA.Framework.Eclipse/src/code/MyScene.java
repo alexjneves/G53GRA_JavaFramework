@@ -5,12 +5,14 @@ import processing.opengl.*;		// import processing/opengl bindings
 import framework.engine.*;		// import framework classes
 import framework.interfaces.*;	// import framework interfaces
 import code.objects.*;			// import your objects package
+
 import code.demos.*;
 import code.demos.triforce.*;
 import code.demos.viewing.Floor;
 import code.demos.animatedlamp.Lamp;
 import code.demos.lighting.*;
 import code.demos.solarsystem.*;
+import code.demos.texturing.*;
 
 /**
  * Your main Coursework class. Inherits {@code framework.}{@link Scene}. Edit this class.  
@@ -89,18 +91,39 @@ public class MyScene extends Scene {
 //		addObjectToScene(t);		
 		
 		// DEMO 7 (MULTIPLE LIGHTS)
+//		Floor  f = new Floor(this);
+//		f.size(100.f);
+//		f.position(0.f,150.f,0.f);
+//		Teapot t = new Teapot(this);
+//		t.size(250.f);
+//		
+//		MultiLight m = new MultiLight(this);
+//
+//		addObjectToScene(f);
+//		addObjectToScene(m);
+//		addObjectToScene(t);		
+
+		// DEMO 8 (Textured Cube)
+		TexturedCube txc = new TexturedCube(this, "./code/demos/texturing/batmanlogo.png");
+		txc.size(200.f);
+		//addObjectToScene(txc);
+		
+		// DEMO 9 (Animated Texturing)
+		Link link = new Link(this, 10.f, 25.f, "./code/demos/texturing/linkSpriteSheet.png");
+		link.position(0.f, 149.9f,-100.f);
+		link.size(10.f);
+		
+		Water water = new Water(this, 20, 20, "./code/demos/texturing/water.png");
+		water.position(0.f, 149.9f, 100.f);
+		water.size(400.f);
+		
 		Floor  f = new Floor(this);
 		f.size(100.f);
 		f.position(0.f,150.f,0.f);
-		Teapot t = new Teapot(this);
-		t.size(250.f);
 		
-		MultiLight m = new MultiLight(this);
-//		
+		addObjectToScene(link);
+	//	addObjectToScene(water); ? does not show texture
 		addObjectToScene(f);
-		addObjectToScene(m);
-		addObjectToScene(t);		
-		
 		
 		super.initialise();						// call default initialisation for camera and projection. 
 	}

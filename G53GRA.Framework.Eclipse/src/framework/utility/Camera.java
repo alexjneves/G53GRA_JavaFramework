@@ -22,35 +22,39 @@ public class Camera implements Input{
 	 * <p>
 	 * Contains Processing links with OpenGL. All calls to the renderer must be made directly through parent.
 	 */
-	private Scene parent;
+	protected Scene parent;
 	/**
 	 * Vectors containing eye coordinates, i.e. the position of the camera.
 	 * <p>
 	 * Position in space that the camera is looking at equals {@code eye+}{@link #view}.
 	 */
-	private PVector eye;
+	protected PVector eye;
 	/**
 	 * The vector along which the camera are looking.
 	 * <p>
 	 * Position in space that the camera is looking at equals {@link #eye}{@code +view}.
 	 */
-	private PVector view;
+	protected PVector view;
 	/**
 	 * Vector representing one of the orthogonal axes of your {@link Camera} space.
 	 */
-	private PVector forward, right, up;
+	protected PVector forward, right, up;
 	/**
 	 * State of key press.
 	 */
-	private int wKey = 0, aKey = 0, sKey = 0, dKey = 0;
+	protected int wKey = 0, aKey = 0, sKey = 0, dKey = 0;
 	/**
 	 * Current button pressed (LEFT, RIGHT or CENTER) or 0 if no button pressed.
 	 */
-	private int button = 0;
+	protected int button = 0;
 	/**
 	 * Previous mouse coordinates.
 	 */
-	private int pmouseX = 0, pmouseY = 0; 
+	protected int pmouseX = 0, pmouseY = 0;
+	/**
+	 * Speed at which the camera moves
+	 */
+	protected float cameraSpeed = 4.f;
 /////// Camera Functions ////////////////////////////////////////////
 	/**
 	 * Constructor for {@link Camera} to set up viewing properties in rendering window.
@@ -87,20 +91,20 @@ public class Camera implements Input{
 	 * @param dT (∆T) change in time since previous call (unused)
 	 */
 	public void update(float dT) {
-		float speed = 4.f;										// Sets default speed of movement
+
 		calculateVectors();										// Ensures axial vectors are updated
 		
 		if (aKey == 1){											// If 'a' is pressed
-			eye = PVector.sub(eye, PVector.mult(right, speed));		// Move left (eye - right)
+			eye = PVector.sub(eye, PVector.mult(right, cameraSpeed));		// Move left (eye - right)
 		}
 		if (dKey == 1){											// If 'd' is pressed
-			eye = PVector.add(eye, PVector.mult(right, speed));		// Move right (eye + right)
+			eye = PVector.add(eye, PVector.mult(right, cameraSpeed));		// Move right (eye + right)
 		}
 		if (wKey == 1){											// If 'w' is pressed
-			eye = PVector.add(eye, PVector.mult(forward,speed));	// Move forward (eye + forward)
+			eye = PVector.add(eye, PVector.mult(forward,cameraSpeed));	// Move forward (eye + forward)
 		}
 		if (sKey == 1){											// If 's' is pressed
-			eye = PVector.sub(eye, PVector.mult(forward, speed));	// Move backward (eye - forward)
+			eye = PVector.sub(eye, PVector.mult(forward, cameraSpeed));	// Move backward (eye - forward)
 		}
 	}
 ////// Directional Axes Methods /////////////////////////////////////
